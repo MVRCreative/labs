@@ -19,9 +19,9 @@ interface ScrollTriggerProps {
 export function ScrollTriggerComponent({
   children,
   animation = "fadeUp",
-  delay = 0,
-  duration = 0.8,
-  threshold = 0.2,
+  delay = 0, // Default delay reduced to 0 (was likely higher)
+  duration = 0.6, // Reduced from 0.8 for faster animations
+  threshold = 0.1, // Reduced from 0.2 to trigger earlier
   className = "",
   once = true,
 }: ScrollTriggerProps) {
@@ -40,24 +40,24 @@ export function ScrollTriggerComponent({
     // Set initial and animated properties based on animation type
     switch (animation) {
       case "fadeUp":
-        initialProps = { y: 50, opacity: 0 }
-        animatedProps = { y: 0, opacity: 1, duration, ease: "power3.out" }
+        initialProps = { y: 30, opacity: 0 } // Reduced from 50 for less dramatic movement
+        animatedProps = { y: 0, opacity: 1, duration, ease: "power2.out" } // Changed from power3 to power2 for faster easing
         break
       case "fadeIn":
         initialProps = { opacity: 0 }
-        animatedProps = { opacity: 1, duration, ease: "power2.inOut" }
+        animatedProps = { opacity: 1, duration, ease: "power1.inOut" } // Changed to power1 for faster fade
         break
       case "slideIn":
-        initialProps = { x: -50, opacity: 0 }
-        animatedProps = { x: 0, opacity: 1, duration, ease: "back.out(1.7)" }
+        initialProps = { x: -30, opacity: 0 } // Reduced from -50 for less dramatic movement
+        animatedProps = { x: 0, opacity: 1, duration, ease: "power2.out" } // Changed from back.out to power2 for faster animation
         break
       case "scale":
-        initialProps = { scale: 0.8, opacity: 0 }
-        animatedProps = { scale: 1, opacity: 1, duration, ease: "power2.out" }
+        initialProps = { scale: 0.9, opacity: 0 } // Changed from 0.8 for less dramatic scaling
+        animatedProps = { scale: 1, opacity: 1, duration, ease: "power1.out" } // Changed to power1 for faster scaling
         break
       default:
-        initialProps = { y: 30, opacity: 0 }
-        animatedProps = { y: 0, opacity: 1, duration, ease: "power2.out" }
+        initialProps = { y: 20, opacity: 0 } // Reduced from 30 for less dramatic movement
+        animatedProps = { y: 0, opacity: 1, duration, ease: "power1.out" } // Changed to power1 for faster animation
     }
 
     // Set initial state
@@ -66,7 +66,7 @@ export function ScrollTriggerComponent({
     // Create ScrollTrigger
     const trigger = ScrollTrigger.create({
       trigger: element,
-      start: `top bottom-=${threshold * 100}%`,
+      start: `top bottom-=${threshold * 100}%`, // This makes elements trigger earlier
       onEnter: () => {
         if (!isVisible || !once) {
           gsap.to(element, { ...animatedProps, delay })
@@ -84,6 +84,8 @@ export function ScrollTriggerComponent({
           setIsVisible(false)
         }
       },
+      // Added markers for debugging (remove in production)
+      // markers: true,
     })
 
     return () => {

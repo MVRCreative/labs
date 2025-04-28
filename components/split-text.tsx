@@ -19,9 +19,9 @@ export function SplitText({
   children,
   className = "",
   type = "words",
-  animation = "topDown", // Changed from 'fadeUp' to 'topDown'
-  delay = 0,
-  stagger = 0.03, // Faster stagger (was 0.05)
+  animation = "topDown",
+  delay = 0, // Reduced default delay to 0
+  stagger = 0.02, // Reduced from 0.03 for faster staggering
   tag: Tag = "div",
   onComplete,
 }: SplitTextProps) {
@@ -56,8 +56,6 @@ export function SplitText({
         </span>
       ))
     } else if (type === "lines") {
-      // Simple line splitting - for more accurate line splitting,
-      // you would need a more complex approach
       splitElements = text.split("\n").map((line, index) => (
         <div key={`line-${index}`} className="block opacity-0">
           {line}
@@ -80,18 +78,18 @@ export function SplitText({
       },
     })
 
-    // Different animation types
+    // Different animation types with optimized values
     switch (animation) {
       case "fadeUp":
         tl.fromTo(
           targets,
-          { y: 20, opacity: 0 },
+          { y: 15, opacity: 0 }, // Reduced from 20 for less dramatic movement
           {
             y: 0,
             opacity: 1,
             stagger,
-            duration: 0.5, // Faster duration (was 0.8)
-            ease: "power2.out", // Faster easing
+            duration: 0.4, // Reduced from 0.5 for faster animation
+            ease: "power1.out", // Changed to power1 for faster easing
           },
         )
         break
@@ -102,30 +100,30 @@ export function SplitText({
           {
             opacity: 1,
             stagger,
-            duration: 0.3, // Faster duration (was 0.5)
-            ease: "power1.out", // Faster easing
+            duration: 0.25, // Reduced from 0.3 for faster animation
+            ease: "power1.out",
           },
         )
         break
       case "slideIn":
         tl.fromTo(
           targets,
-          { x: -20, opacity: 0 },
+          { x: -15, opacity: 0 }, // Reduced from -20 for less dramatic movement
           {
             x: 0,
             opacity: 1,
             stagger,
-            duration: 0.4, // Faster duration (was 0.6)
-            ease: "power1.out", // Faster easing (was back.out)
+            duration: 0.3, // Reduced from 0.4 for faster animation
+            ease: "power1.out",
           },
         )
         break
       case "random":
-        // Random animations for each element
+        // Random animations with reduced values for faster animation
         Array.from(targets).forEach((target, i) => {
-          const randomY = Math.random() * 30 - 15 // Smaller random values
-          const randomDelay = Math.random() * 0.3 // Shorter random delay
-          const randomDuration = 0.3 + Math.random() * 0.3 // Faster random duration
+          const randomY = Math.random() * 20 - 10 // Reduced from 30-15 for less dramatic movement
+          const randomDelay = Math.random() * 0.2 // Reduced from 0.3 for faster animation
+          const randomDuration = 0.2 + Math.random() * 0.2 // Reduced from 0.3+0.3 for faster animation
 
           tl.fromTo(
             target,
@@ -137,50 +135,48 @@ export function SplitText({
               y: 0,
               opacity: 1,
               duration: randomDuration,
-              ease: "power2.out",
+              ease: "power1.out", // Changed to power1 for faster easing
             },
             delay + randomDelay + i * stagger,
           )
         })
         break
-      // Add new top-to-bottom and bottom-to-top animations
       case "topDown":
         tl.fromTo(
           targets,
-          { y: -15, opacity: 0 },
+          { y: -10, opacity: 0 }, // Reduced from -15 for less dramatic movement
           {
             y: 0,
             opacity: 1,
             stagger,
-            duration: 0.4,
-            ease: "power2.out",
+            duration: 0.3, // Reduced from 0.4 for faster animation
+            ease: "power1.out", // Changed to power1 for faster easing
           },
         )
         break
       case "bottomUp":
         tl.fromTo(
           targets,
-          { y: 15, opacity: 0 },
+          { y: 10, opacity: 0 }, // Reduced from 15 for less dramatic movement
           {
             y: 0,
             opacity: 1,
             stagger,
-            duration: 0.4,
-            ease: "power2.out",
+            duration: 0.3, // Reduced from 0.4 for faster animation
+            ease: "power1.out", // Changed to power1 for faster easing
           },
         )
         break
       default:
-        // Make the default animation a top-down stagger
         tl.fromTo(
           targets,
-          { y: -10, opacity: 0 },
+          { y: -8, opacity: 0 }, // Reduced from -10 for less dramatic movement
           {
             y: 0,
             opacity: 1,
             stagger,
-            duration: 0.4,
-            ease: "power2.out",
+            duration: 0.3, // Reduced from 0.4 for faster animation
+            ease: "power1.out", // Changed to power1 for faster easing
           },
         )
     }

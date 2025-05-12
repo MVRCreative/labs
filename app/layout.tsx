@@ -12,9 +12,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Bramo - Full-Stack Partnership Proposal",
+  title: "Innovation Labs - Build Bold. Ship Smart.",
   description:
-    "A community platform for vintage car enthusiasts, allowing users to create virtual garages, share stories, and participate in real-world events.",
+    "A venture studio turning big ideas into scalable products—powered by strategy, community, and execution.",
     generator: 'v0.dev'
 }
 
@@ -34,3 +34,4 @@ export default function RootLayout({
     </html>
   )
 }
+

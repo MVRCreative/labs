@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useEffect, useRef, useState } from "react"
+import { Play, Pause, Volume2, VolumeX } from "lucide-react"
 import gsap from "gsap"
 
 export function AudioPlayer() {
@@ -245,6 +246,68 @@ export function AudioPlayer() {
         <source src="/audio/background-music.ogg" type="audio/ogg" />
         <source src="/audio/background-music.wav" type="audio/wav" />
       </audio>
+
+      <div
+        className="audio-player-container fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-zinc-900/80 backdrop-blur-md p-3 rounded-full border border-zinc-800/50"
+        title="Audio player"
+      >
+        <button
+          onClick={togglePlay}
+          className={`size-10 rounded-full flex items-center justify-center transition-colors ${
+            isPlaying ? "bg-orange-600 text-white" : "bg-zinc-800 text-orange-400 hover:bg-zinc-700"
+          }`}
+          disabled={!isLoaded && !loadError}
+          aria-label={isPlaying ? "Pause" : "Play"}
+        >
+          {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
+        </button>
+
+        <div className="relative">
+          <canvas ref={canvasRef} className="w-[120px] h-[40px]" aria-hidden="true" />
+          {!isLoaded && !loadError && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="size-4 rounded-full border-2 border-orange-400 border-t-transparent animate-spin"></div>
+            </div>
+          )}
+          {loadError && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <p className="text-xs text-orange-400">Audio unavailable</p>
+            </div>
+          )}
+        </div>
+
+        <div className="relative" ref={volumeSliderRef}>
+          <button
+            onClick={toggleVolumeSlider}
+            className="size-8 rounded-full flex items-center justify-center bg-zinc-800 text-orange-400 hover:bg-zinc-700"
+            aria-label="Volume control"
+          >
+            {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
+          </button>
+
+          {/* Volume slider popup */}
+          {showVolumeSlider && (
+            <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-8 h-32 bg-zinc-900/90 backdrop-blur-md rounded-full border border-zinc-800/50 flex flex-col items-center justify-center p-2">
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={volume}
+                onChange={handleVolumeChange}
+                className="h-24 w-2 appearance-none bg-zinc-800 rounded-full outline-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-orange-500 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-orange-500 [&::-moz-range-thumb]:border-none"
+                style={{
+                  WebkitAppearance: "slider-vertical",
+                  writingMode: "bt-lr" /* For Firefox compatibility */,
+                }}
+                aria-label="Volume"
+              />
+              <div className="mt-1 text-xs text-orange-400">{Math.round(volume * 100)}%</div>
+            </div>
+          )}
+        </div>
+      </div>
     </>
   )
 }
+

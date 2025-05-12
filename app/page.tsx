@@ -1,22 +1,19 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, CheckCircle, BarChart2, Zap, Users } from "lucide-react"
+import { ArrowRight, Car, CheckCircle, Rocket, Flame } from "lucide-react"
 import { CursorEffect } from "@/components/cursor-effect"
 import { NavLink } from "@/components/nav-link"
 import { SplitText } from "@/components/split-text"
 import { ScrollTriggerComponent } from "@/components/scroll-trigger"
-import { GridLightEffects } from "@/components/grid-light-effects"
-import Image from "next/image"
+import { PlanCard } from "@/components/plan-card"
+import { TimelineCard } from "@/components/timeline-card"
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#0A0A0F] text-white font-light relative">
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[#0A0A0F] bg-grid-pattern pointer-events-none"></div>
-
-      {/* Grid Light Effects */}
-      <GridLightEffects gridSize={50} density={0.03} color="rgba(249, 115, 22, 0.6)" />
 
       {/* Side Gradient Overlays */}
       <div className="absolute inset-y-0 left-0 w-[15vw] bg-gradient-to-r from-[#0A0A0F] to-transparent pointer-events-none z-[1]"></div>
@@ -38,14 +35,17 @@ export default function Home() {
           <div className="container mx-auto px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Link href="/" className="block">
-                <Image src="/logo.svg" alt="MAVER" width={140} height={20} priority />
+                <div className="flex items-center gap-2">
+                  <Car className="text-orange-500 h-6 w-6" />
+                  <span className="text-2xl font-light">MoverLabs</span>
+                </div>
               </Link>
             </div>
             <nav className="hidden md:flex items-center gap-8">
-              <NavLink href="#features">Features</NavLink>
-              <NavLink href="#solutions">Solutions</NavLink>
-              <NavLink href="#pricing">Pricing</NavLink>
-              <NavLink href="#testimonials">Testimonials</NavLink>
+              <NavLink href="#summary">Project Summary</NavLink>
+              <NavLink href="#plans">Retainer Plans</NavLink>
+              <NavLink href="#tech">Tech Stack</NavLink>
+              <NavLink href="#timeline">Timeline</NavLink>
             </nav>
             <div>
               <Button variant="ghost" className="text-zinc-400 hover:text-white hover:bg-zinc-800/50 text-sm">
@@ -74,38 +74,38 @@ export default function Home() {
           <div className="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
             <div className="flex justify-center mb-8">
               <Badge className="bg-zinc-800/50 text-orange-400 hover:bg-zinc-800/50 rounded-full px-4 py-1.5 text-sm">
-                Limited Time Offer
+                Partnership Proposal
               </Badge>
             </div>
 
             <div className="text-center">
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-light tracking-tight text-balance mb-8">
                 <SplitText type="words" animation="fadeUp" stagger={0.08}>
-                  Transform Your
+                  Bramo Full-Stack
                 </SplitText>{" "}
                 <span className="text-orange-400">
                   <SplitText type="chars" animation="random" stagger={0.04} delay={0.5}>
-                    Business Today
+                    Partnership
                   </SplitText>
                 </span>
               </h1>
 
               <p className="mt-8 text-xl md:text-2xl text-pretty text-zinc-400 max-w-3xl mx-auto">
                 <SplitText type="words" animation="fadeIn" stagger={0.02} delay={0.8}>
-                  Powerful solutions designed to streamline your operations, boost productivity, and drive growth for
-                  your business.
+                  A community platform for vintage car enthusiasts, allowing users to create virtual garages, share
+                  stories, and participate in real-world events.
                 </SplitText>
               </p>
 
               <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
                 <Button className="bg-orange-600 hover:bg-orange-700 rounded-full px-8 py-6 h-auto text-sm">
-                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                  View Proposal <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Button
                   variant="outline"
                   className="border-zinc-700 text-zinc-300 hover:bg-zinc-800/50 rounded-full px-8 py-6 h-auto text-sm"
                 >
-                  Book a Demo
+                  Contact Us
                 </Button>
               </div>
             </div>
@@ -126,432 +126,381 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-16 md:py-24">
+        {/* Project Summary Section */}
+        <section id="summary" className="py-16 md:py-24">
           <div className="container mx-auto px-6">
+            <div className="max-w-xl mx-auto text-center mb-16">
+              <Badge className="mb-4 bg-zinc-800/50 text-orange-400 hover:bg-zinc-800/50 rounded-full">
+                Project Summary
+              </Badge>
+              <h2 className="text-3xl font-light mb-6">
+                <SplitText type="words" animation="fadeUp" stagger={0.08}>
+                  Building a Community for Vintage Car Enthusiasts
+                </SplitText>
+              </h2>
+            </div>
+
             <ScrollTriggerComponent animation="fadeUp">
-              <div className="bg-zinc-900/50 rounded-xl p-8 border border-zinc-800/50 backdrop-blur-sm">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                  <div className="text-center">
-                    <div className="text-4xl font-light text-orange-400 mb-2">98%</div>
-                    <p className="text-zinc-400 text-sm">Customer Satisfaction</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-light text-orange-400 mb-2">10k+</div>
-                    <p className="text-zinc-400 text-sm">Active Users</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-light text-orange-400 mb-2">35%</div>
-                    <p className="text-zinc-400 text-sm">Productivity Increase</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-light text-orange-400 mb-2">24/7</div>
-                    <p className="text-zinc-400 text-sm">Customer Support</p>
-                  </div>
-                </div>
+              <div className="max-w-3xl mx-auto text-center">
+                <p className="text-zinc-400 text-lg leading-relaxed mb-6">
+                  Bramo is a community platform for vintage car enthusiasts, allowing users to create virtual garages,
+                  share stories behind their vehicles, and participate in real-world events.
+                </p>
+                <p className="text-zinc-400 text-lg leading-relaxed mb-6">
+                  The client is currently managing the app via Lovable with staging and production flows handled through
+                  Netlify. This proposal outlines a structured plan to migrate the app to a professional local
+                  development environment and provide ongoing full-stack support at three scalable levels.
+                </p>
               </div>
             </ScrollTriggerComponent>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section id="features" className="py-16 md:py-24">
+        {/* Tech Stack Section */}
+        <section id="tech" className="py-16 md:py-24">
           <div className="container mx-auto px-6">
             <div className="max-w-xl mx-auto text-center mb-16">
               <Badge className="mb-4 bg-zinc-800/50 text-orange-400 hover:bg-zinc-800/50 rounded-full">
-                Key Features
+                Tech Stack & Tools
               </Badge>
               <h2 className="text-3xl font-light mb-6">
                 <SplitText type="words" animation="fadeUp" stagger={0.08}>
-                  Everything You Need to Succeed
+                  Professional Tools for Quality Development
+                </SplitText>
+              </h2>
+              <p className="text-zinc-400 mb-8">
+                <SplitText type="words" animation="fadeIn" stagger={0.03} delay={0.3}>
+                  We've carefully selected these technologies to ensure a robust, maintainable codebase.
+                </SplitText>
+              </p>
+            </div>
+
+            <ScrollTriggerComponent animation="fadeUp">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                {/* Frontend Card - Large */}
+                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm md:col-span-2 relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full blur-xl transform translate-x-1/4 -translate-y-1/4 group-hover:bg-orange-500/10 transition-all duration-700"></div>
+
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="size-12 rounded-full border border-orange-500/20 flex items-center justify-center flex-shrink-0">
+                        <div className="size-2 rounded-full bg-orange-500"></div>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-light">Frontend</h3>
+                        <p className="text-zinc-400 text-sm">
+                          The user interface layer that delivers a responsive, intuitive experience.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-4 mt-6">
+                      <div className="bg-zinc-800/30 rounded-lg p-4 hover:bg-zinc-800/50 transition-colors">
+                        <h4 className="font-medium text-orange-400 mb-2">React</h4>
+                        <p className="text-zinc-400 text-sm">
+                          Component-based UI library for building interactive interfaces.
+                        </p>
+                      </div>
+                      <div className="bg-zinc-800/30 rounded-lg p-4 hover:bg-zinc-800/50 transition-colors">
+                        <h4 className="font-medium text-orange-400 mb-2">TailwindCSS</h4>
+                        <p className="text-zinc-400 text-sm">Utility-first CSS framework for rapid styling.</p>
+                      </div>
+                      <div className="bg-zinc-800/30 rounded-lg p-4 hover:bg-zinc-800/50 transition-colors">
+                        <h4 className="font-medium text-orange-400 mb-2">ShadCN</h4>
+                        <p className="text-zinc-400 text-sm">Accessible component library built on Radix UI.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-4 left-6 text-xs text-zinc-500">
+                    Frontend for seamless user experiences
+                  </div>
+                </div>
+
+                {/* Backend Card */}
+                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full blur-xl transform translate-x-1/4 -translate-y-1/4 group-hover:bg-orange-500/10 transition-all duration-700"></div>
+
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="size-12 rounded-full border border-orange-500/20 flex items-center justify-center flex-shrink-0">
+                        <div className="size-2 rounded-full bg-orange-500"></div>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-light">Backend</h3>
+                        <p className="text-zinc-400 text-sm">
+                          Powerful server-side technologies for data and business logic.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4 mt-6">
+                      <div className="bg-zinc-800/30 rounded-lg p-4 hover:bg-zinc-800/50 transition-colors">
+                        <h4 className="font-medium text-orange-400 mb-2">Node.js</h4>
+                        <p className="text-zinc-400 text-sm">
+                          JavaScript runtime for scalable server-side applications.
+                        </p>
+                      </div>
+                      <div className="bg-zinc-800/30 rounded-lg p-4 hover:bg-zinc-800/50 transition-colors">
+                        <h4 className="font-medium text-orange-400 mb-2">Supabase</h4>
+                        <p className="text-zinc-400 text-sm">
+                          Open-source Firebase alternative with PostgreSQL database.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-4 left-6 text-xs text-zinc-500">
+                    Backend for reliable data management
+                  </div>
+                </div>
+
+                {/* Project Management Card */}
+                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full blur-xl transform translate-x-1/4 -translate-y-1/4 group-hover:bg-orange-500/10 transition-all duration-700"></div>
+
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="size-12 rounded-full border border-orange-500/20 flex items-center justify-center flex-shrink-0">
+                        <div className="size-2 rounded-full bg-orange-500"></div>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-light">Project Management</h3>
+                        <p className="text-zinc-400 text-sm">Tools that keep development organized and transparent.</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4 mt-6">
+                      <div className="bg-zinc-800/30 rounded-lg p-4 hover:bg-zinc-800/50 transition-colors">
+                        <h4 className="font-medium text-orange-400 mb-2">Linear</h4>
+                        <p className="text-zinc-400 text-sm">Modern issue tracking tool for high-performance teams.</p>
+                      </div>
+                      <div className="bg-zinc-800/30 rounded-lg p-4 hover:bg-zinc-800/50 transition-colors">
+                        <h4 className="font-medium text-orange-400 mb-2">Loom + Slack</h4>
+                        <p className="text-zinc-400 text-sm">Communication tools for async updates and messaging.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-4 left-6 text-xs text-zinc-500">
+                    Project management for efficient workflows
+                  </div>
+                </div>
+
+                {/* Hosting Card - Large */}
+                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm md:col-span-2 relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full blur-xl transform translate-x-1/4 -translate-y-1/4 group-hover:bg-orange-500/10 transition-all duration-700"></div>
+
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="size-12 rounded-full border border-orange-500/20 flex items-center justify-center flex-shrink-0">
+                        <div className="size-2 rounded-full bg-orange-500"></div>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-light">Hosting & Deployment</h3>
+                        <p className="text-zinc-400 text-sm">
+                          Infrastructure that ensures your application is fast and reliable.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 mt-6">
+                      <div className="bg-zinc-800/30 rounded-lg p-4 hover:bg-zinc-800/50 transition-colors">
+                        <h4 className="font-medium text-orange-400 mb-2">Netlify</h4>
+                        <p className="text-zinc-400 text-sm">
+                          All-in-one platform for automating modern web projects with continuous deployment.
+                        </p>
+                      </div>
+                      <div className="bg-zinc-800/30 rounded-lg p-4 hover:bg-zinc-800/50 transition-colors">
+                        <h4 className="font-medium text-orange-400 mb-2">GitHub</h4>
+                        <p className="text-zinc-400 text-sm">
+                          Version control platform for code collaboration and feature branching.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-4 left-6 text-xs text-zinc-500">Hosting for seamless deployment</div>
+                </div>
+
+                {/* Optional Tools Card */}
+              </div>
+            </ScrollTriggerComponent>
+          </div>
+        </section>
+
+        {/* Retainer Plan Options Section */}
+        <section id="plans" className="py-16 md:py-24">
+          <div className="container mx-auto px-6">
+            <div className="max-w-xl mx-auto text-center mb-16">
+              <Badge className="mb-4 bg-zinc-800/50 text-orange-400 hover:bg-zinc-800/50 rounded-full">
+                Retainer Plan Options
+              </Badge>
+              <h2 className="text-3xl font-light mb-6">
+                <SplitText type="words" animation="fadeUp" stagger={0.08}>
+                  Choose the Right Plan for Your Needs
                 </SplitText>
               </h2>
               <p className="text-zinc-400">
                 <SplitText type="words" animation="fadeIn" stagger={0.03} delay={0.3}>
-                  Our comprehensive suite of tools and services designed to help your business thrive in today's
-                  competitive market.
+                  Each plan ensures you're supported with technical leadership and dev execution.
                 </SplitText>
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <ScrollTriggerComponent animation="fadeUp">
-                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm h-full">
-                  <div className="size-12 rounded-full border border-orange-500/20 flex items-center justify-center mb-6">
-                    <Zap className="text-orange-400 size-5" />
-                  </div>
-                  <h3 className="text-xl font-light mb-3">
-                    <SplitText type="chars" animation="fadeUp" stagger={0.02}>
-                      Lightning Fast Performance
-                    </SplitText>
-                  </h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed mb-6">
-                    Our platform is optimized for speed and efficiency, ensuring your team can work without delays or
-                    interruptions.
-                  </p>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Real-time data processing</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Minimal latency across all devices</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">99.9% uptime guarantee</span>
-                    </li>
-                  </ul>
-                </div>
-              </ScrollTriggerComponent>
+              <PlanCard
+                title="STABILITY Plan"
+                price="$3,000"
+                description="Your go-to dev for stability & light enhancements."
+                features={[
+                  "Up to 3 days/month of development",
+                  "Bug fixes & light feature work",
+                  "GitHub + Netlify branch management",
+                  "Linear project setup & tracking",
+                  "Async communication & review",
+                ]}
+                icon={<CheckCircle className="text-orange-400 size-5" />}
+                index={0}
+                timeline={[
+                  { week: "Week 1", task: "GitHub repo & Netlify setup" },
+                  { week: "Week 2", task: "Begin Lovable → local dev migration" },
+                  { week: "Week 3", task: "Complete migration & testing" },
+                  { week: "Week 4+", task: "Bug fixes & feature work (~3 days/month)" },
+                ]}
+              />
 
-              <ScrollTriggerComponent animation="fadeUp" delay={0.2}>
-                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm h-full">
-                  <div className="size-12 rounded-full border border-orange-500/20 flex items-center justify-center mb-6">
-                    <BarChart2 className="text-orange-400 size-5" />
-                  </div>
-                  <h3 className="text-xl font-light mb-3">
-                    <SplitText type="chars" animation="fadeUp" stagger={0.02}>
-                      Advanced Analytics
-                    </SplitText>
-                  </h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed mb-6">
-                    Gain valuable insights into your business performance with our comprehensive analytics dashboard.
-                  </p>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Customizable reporting tools</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Predictive analysis capabilities</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Data visualization and export options</span>
-                    </li>
-                  </ul>
-                </div>
-              </ScrollTriggerComponent>
+              <PlanCard
+                title="GROWTH Plan"
+                price="$5,500"
+                description="Ship more, iterate faster, and keep momentum."
+                features={[
+                  "Up to 5 days/month",
+                  "Full-stack support (frontend, backend, auth)",
+                  "Prioritized bug & feature tracking",
+                  "System audits (e.g. auth issues)",
+                  "Weekly async updates",
+                  "GitHub branching & Netlify CI/CD",
+                ]}
+                icon={<Rocket className="text-orange-400 size-5" />}
+                index={1}
+                highlighted={true}
+                timeline={[
+                  { week: "Week 1", task: "GitHub + Netlify setup & migration start" },
+                  { week: "Week 2", task: "Complete migration & begin improvements" },
+                  { week: "Week 3", task: "Launch Linear board & map features" },
+                  { week: "Week 4+", task: "Feature work & weekly updates (~5 days/month)" },
+                ]}
+              />
 
-              <ScrollTriggerComponent animation="fadeUp" delay={0.4}>
-                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm h-full">
-                  <div className="size-12 rounded-full border border-orange-500/20 flex items-center justify-center mb-6">
-                    <Users className="text-orange-400 size-5" />
-                  </div>
-                  <h3 className="text-xl font-light mb-3">
-                    <SplitText type="chars" animation="fadeUp" stagger={0.02}>
-                      Team Collaboration
-                    </SplitText>
-                  </h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed mb-6">
-                    Empower your team to work together seamlessly with our integrated collaboration tools.
-                  </p>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Real-time document editing</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Project management capabilities</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Secure file sharing and storage</span>
-                    </li>
-                  </ul>
-                </div>
-              </ScrollTriggerComponent>
+              <PlanCard
+                title="STRATEGY Plan"
+                price="$7,500"
+                description="Your embedded tech partner & strategic advisor."
+                features={[
+                  "Up to 10 days/month",
+                  "Everything in Growth Plan +",
+                  "Monthly strategy call",
+                  "Product direction & roadmap collaboration",
+                  "Scalable architecture decisions",
+                  "Optional light team mgmt",
+                ]}
+                icon={<Flame className="text-orange-400 size-5" />}
+                index={2}
+                timeline={[
+                  { week: "Week 1", task: "Complete setup & migration in 1 week" },
+                  { week: "Week 2", task: "Audit feature backlog & begin implementation" },
+                  { week: "Week 3-4", task: "Weekly check-ins & roadmap planning" },
+                  { week: "Ongoing", task: "Architecture & UX improvements (~10 days/month)" },
+                ]}
+              />
             </div>
           </div>
         </section>
 
-        {/* Solutions Section */}
-        <section id="solutions" className="py-16 md:py-24">
+        {/* Execution Timeline Section */}
+        <section id="timeline" className="py-16 md:py-24">
           <div className="container mx-auto px-6">
             <div className="max-w-xl mx-auto text-center mb-16">
               <Badge className="mb-4 bg-zinc-800/50 text-orange-400 hover:bg-zinc-800/50 rounded-full">
-                Business Solutions
+                Execution Timeline
               </Badge>
               <h2 className="text-3xl font-light mb-6">
                 <SplitText type="words" animation="fadeUp" stagger={0.08}>
-                  Tailored for Your Industry
+                  Structured Process for Each Plan
                 </SplitText>
               </h2>
               <p className="text-zinc-400">
                 <SplitText type="words" animation="fadeIn" stagger={0.03} delay={0.3}>
-                  We understand that different industries have unique challenges. Our solutions are customized to meet
-                  your specific needs.
+                  All plans follow the same foundational process with different timelines.
                 </SplitText>
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              <ScrollTriggerComponent animation="slideIn">
-                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm h-full">
-                  <div className="mb-6 relative">
-                    <div className="aspect-video rounded-xl bg-zinc-800/50 overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent"></div>
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-light mb-3">
-                    <SplitText type="words" animation="slideIn" stagger={0.05}>
-                      Enterprise Solutions
-                    </SplitText>
-                  </h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed mb-4">
-                    Comprehensive tools designed for large organizations with complex needs. Scale your operations
-                    efficiently while maintaining security and compliance.
-                  </p>
-                  <Button
-                    variant="outline"
-                    className="border-zinc-700 text-zinc-300 hover:bg-zinc-800/50 rounded-full px-6 h-10 text-sm"
-                  >
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
-              </ScrollTriggerComponent>
+            <div className="space-y-12">
+              <TimelineCard
+                title="STABILITY Plan (3 days/month)"
+                steps={[
+                  { week: "Week 1", tasks: ["GitHub repo created", "Connect to Netlify", "Set up feature branching"] },
+                  { week: "Week 2", tasks: ["Begin Lovable → local dev migration"] },
+                  { week: "Week 3", tasks: ["Complete migration", "Test staging/production builds"] },
+                  {
+                    week: "Week 4+",
+                    tasks: [
+                      "Setup Linear board",
+                      "Add bug reports & feature backlog",
+                      "Begin resolving issues (~3 days/month)",
+                    ],
+                  },
+                ]}
+                color="yellow"
+                index={0}
+              />
 
-              <ScrollTriggerComponent animation="slideIn" delay={0.2}>
-                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm h-full">
-                  <div className="mb-6 relative">
-                    <div className="aspect-video rounded-xl bg-zinc-800/50 overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent"></div>
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-light mb-3">
-                    <SplitText type="words" animation="slideIn" stagger={0.05}>
-                      Small Business Package
-                    </SplitText>
-                  </h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed mb-4">
-                    Affordable solutions tailored for growing businesses. Get all the essential tools you need without
-                    the enterprise price tag.
-                  </p>
-                  <Button
-                    variant="outline"
-                    className="border-zinc-700 text-zinc-300 hover:bg-zinc-800/50 rounded-full px-6 h-10 text-sm"
-                  >
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
-              </ScrollTriggerComponent>
+              <TimelineCard
+                title="GROWTH Plan (5 days/month)"
+                steps={[
+                  {
+                    week: "Week 1",
+                    tasks: ["GitHub + Netlify setup", "Branching system live", "Begin full migration"],
+                  },
+                  { week: "Week 2", tasks: ["Complete migration", "Begin scoped improvements"] },
+                  { week: "Week 3", tasks: ["Launch Linear board", "Map bugs & features"] },
+                  { week: "Week 4+", tasks: ["Implement feature work (~5 days/month)", "Weekly updates"] },
+                ]}
+                color="green"
+                index={1}
+              />
+
+              <TimelineCard
+                title="STRATEGY Plan (10 days/month)"
+                steps={[
+                  {
+                    week: "Week 1",
+                    tasks: [
+                      "GitHub + Netlify setup",
+                      "Migrate from Lovable to local codebase (complete in 1 week)",
+                      "Linear project + strategy kickoff call",
+                    ],
+                  },
+                  { week: "Week 2", tasks: ["Audit feature & bug backlog", "Begin implementation"] },
+                  {
+                    week: "Week 3–4",
+                    tasks: [
+                      "Weekly check-ins",
+                      "Roadmap planning",
+                      "Performance, architecture, UX improvements (~10 days/month)",
+                    ],
+                  },
+                ]}
+                color="red"
+                index={2}
+              />
             </div>
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section id="pricing" className="py-16 md:py-24">
-          <div className="container mx-auto px-6">
-            <div className="max-w-xl mx-auto text-center mb-16">
-              <Badge className="mb-4 bg-zinc-800/50 text-orange-400 hover:bg-zinc-800/50 rounded-full">
-                Pricing Plans
-              </Badge>
-              <h2 className="text-3xl font-light mb-6">
-                <SplitText type="words" animation="fadeUp" stagger={0.08}>
-                  Transparent Pricing, No Surprises
-                </SplitText>
-              </h2>
-              <p className="text-zinc-400">
-                <SplitText type="words" animation="fadeIn" stagger={0.03} delay={0.3}>
-                  Choose the plan that works best for your business needs. All plans include core features with no
-                  hidden fees.
-                </SplitText>
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <ScrollTriggerComponent animation="fadeUp">
-                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm h-full">
-                  <div className="text-zinc-400 text-sm mb-4">Starter</div>
-                  <div className="flex items-baseline mb-6">
-                    <span className="text-4xl font-light">$29</span>
-                    <span className="text-zinc-500 ml-2">/month</span>
-                  </div>
-                  <p className="text-zinc-500 text-sm leading-relaxed mb-6">
-                    Perfect for small teams and startups just getting off the ground.
-                  </p>
-                  <ul className="space-y-3 mb-6">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Up to 5 team members</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Basic analytics</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">5GB storage</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Email support</span>
-                    </li>
-                  </ul>
-                  <Button className="w-full bg-zinc-800 hover:bg-zinc-700 rounded-full px-6 h-10 text-sm">
-                    Get Started
-                  </Button>
-                </div>
-              </ScrollTriggerComponent>
-
-              <ScrollTriggerComponent animation="fadeUp" delay={0.2}>
-                <div className="bg-zinc-900/50 rounded-xl p-6 border border-orange-500/30 backdrop-blur-sm h-full relative">
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-xs px-3 py-1 rounded-full">
-                    Most Popular
-                  </div>
-                  <div className="text-orange-400 text-sm mb-4">Professional</div>
-                  <div className="flex items-baseline mb-6">
-                    <span className="text-4xl font-light">$79</span>
-                    <span className="text-zinc-500 ml-2">/month</span>
-                  </div>
-                  <p className="text-zinc-500 text-sm leading-relaxed mb-6">
-                    Ideal for growing businesses that need more features and capacity.
-                  </p>
-                  <ul className="space-y-3 mb-6">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Up to 20 team members</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Advanced analytics</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">50GB storage</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Priority support</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Custom integrations</span>
-                    </li>
-                  </ul>
-                  <Button className="w-full bg-orange-600 hover:bg-orange-700 rounded-full px-6 h-10 text-sm">
-                    Get Started
-                  </Button>
-                </div>
-              </ScrollTriggerComponent>
-
-              <ScrollTriggerComponent animation="fadeUp" delay={0.4}>
-                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm h-full">
-                  <div className="text-zinc-400 text-sm mb-4">Enterprise</div>
-                  <div className="flex items-baseline mb-6">
-                    <span className="text-4xl font-light">$199</span>
-                    <span className="text-zinc-500 ml-2">/month</span>
-                  </div>
-                  <p className="text-zinc-500 text-sm leading-relaxed mb-6">
-                    For large organizations that need maximum power and customization.
-                  </p>
-                  <ul className="space-y-3 mb-6">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Unlimited team members</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Enterprise-grade analytics</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">500GB storage</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">24/7 dedicated support</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="text-green-400 size-4 mt-0.5" />
-                      <span className="text-zinc-300 text-sm">Custom development</span>
-                    </li>
-                  </ul>
-                  <Button className="w-full bg-zinc-800 hover:bg-zinc-700 rounded-full px-6 h-10 text-sm">
-                    Contact Sales
-                  </Button>
-                </div>
-              </ScrollTriggerComponent>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section id="testimonials" className="py-16 md:py-24">
-          <div className="container mx-auto px-6">
-            <div className="max-w-xl mx-auto text-center mb-16">
-              <Badge className="mb-4 bg-zinc-800/50 text-orange-400 hover:bg-zinc-800/50 rounded-full">
-                Testimonials
-              </Badge>
-              <h2 className="text-3xl font-light mb-6">
-                <SplitText type="words" animation="fadeUp" stagger={0.08}>
-                  What Our Clients Say
-                </SplitText>
-              </h2>
-              <p className="text-zinc-400">
-                <SplitText type="words" animation="fadeIn" stagger={0.03} delay={0.3}>
-                  Don't just take our word for it. Here's what our clients have to say about working with us.
-                </SplitText>
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <ScrollTriggerComponent animation="fadeUp">
-                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm h-full">
-                  <div className="flex items-center mb-4">
-                    <div className="size-12 rounded-full bg-zinc-800 mr-4"></div>
-                    <div>
-                      <h4 className="text-lg font-light">Sarah Johnson</h4>
-                      <p className="text-zinc-500 text-sm">CEO, TechStart Inc.</p>
-                    </div>
-                  </div>
-                  <p className="text-zinc-400 text-sm leading-relaxed italic">
-                    "MAVER has completely transformed how we operate. The analytics tools alone have helped us increase
-                    our revenue by 35% in just six months."
-                  </p>
-                </div>
-              </ScrollTriggerComponent>
-
-              <ScrollTriggerComponent animation="fadeUp" delay={0.2}>
-                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm h-full">
-                  <div className="flex items-center mb-4">
-                    <div className="size-12 rounded-full bg-zinc-800 mr-4"></div>
-                    <div>
-                      <h4 className="text-lg font-light">Michael Chen</h4>
-                      <p className="text-zinc-500 text-sm">Operations Director, Global Logistics</p>
-                    </div>
-                  </div>
-                  <p className="text-zinc-400 text-sm leading-relaxed italic">
-                    "The implementation was seamless, and the support team has been exceptional. We've been able to
-                    streamline our processes and reduce overhead costs significantly."
-                  </p>
-                </div>
-              </ScrollTriggerComponent>
-
-              <ScrollTriggerComponent animation="fadeUp" delay={0.4}>
-                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm h-full">
-                  <div className="flex items-center mb-4">
-                    <div className="size-12 rounded-full bg-zinc-800 mr-4"></div>
-                    <div>
-                      <h4 className="text-lg font-light">Jessica Williams</h4>
-                      <p className="text-zinc-500 text-sm">Marketing Manager, Retail Solutions</p>
-                    </div>
-                  </div>
-                  <p className="text-zinc-400 text-sm leading-relaxed italic">
-                    "As a marketing team, we needed tools that could keep up with our fast-paced environment. MAVER not
-                    only met but exceeded our expectations. The collaboration features are game-changing."
-                  </p>
-                </div>
-              </ScrollTriggerComponent>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
+        {/* Summary Section */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-6">
             <ScrollTriggerComponent animation="scale">
@@ -559,23 +508,25 @@ export default function Home() {
                 <div className="max-w-3xl mx-auto text-center">
                   <h2 className="text-2xl md:text-3xl font-light mb-4">
                     <SplitText type="words" animation="fadeUp" stagger={0.08}>
-                      Ready to transform your business?
+                      Let's build something timeless.
                     </SplitText>
                   </h2>
-                  <p className="text-zinc-400 text-sm mb-8">
+                  <p className="text-zinc-400 text-lg mb-8">
                     <SplitText type="words" animation="fadeIn" stagger={0.03} delay={0.3}>
-                      Get started today with a 14-day free trial. No credit card required.
+                      Each plan ensures you're supported with technical leadership and dev execution. Whether you need
+                      light-touch maintenance or a fully embedded partner, this proposal gives you scalable options to
+                      match your momentum and goals.
                     </SplitText>
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center gap-4">
                     <Button className="bg-orange-600 hover:bg-orange-700 rounded-full px-6 h-10 text-sm">
-                      Start Free Trial
+                      Get Started
                     </Button>
                     <Button
                       variant="outline"
                       className="border-zinc-700 text-zinc-300 hover:bg-zinc-800/50 rounded-full px-6 h-10 text-sm"
                     >
-                      Schedule a Demo
+                      Contact Us
                     </Button>
                   </div>
                 </div>
@@ -589,8 +540,7 @@ export default function Home() {
           <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="mb-6 md:mb-0">
-                <Image src="/logo.svg" alt="MAVER" width={100} height={16} />
-                <p className="text-zinc-500 text-sm mt-2">Transforming businesses since 2020</p>
+                <span className="text-lg font-light">© 2025 MoverLabs</span>
               </div>
               <div className="flex gap-8">
                 <Link href="#" className="text-zinc-500 hover:text-white text-sm">
@@ -600,14 +550,13 @@ export default function Home() {
                   Terms
                 </Link>
                 <Link href="#" className="text-zinc-500 hover:text-white text-sm">
-                  Support
-                </Link>
-                <Link href="#" className="text-zinc-500 hover:text-white text-sm">
                   Contact
                 </Link>
               </div>
             </div>
-            <div className="mt-6 text-center text-zinc-600 text-xs">© 2025 MAVER. All rights reserved.</div>
+            <div className="mt-6 text-center text-zinc-600 text-xs">
+              Building innovative solutions for vintage car enthusiasts
+            </div>
           </div>
         </footer>
       </div>

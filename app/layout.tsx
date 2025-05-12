@@ -12,9 +12,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Innovation Labs - Build Bold. Ship Smart.",
+  title: "Bramo - Full-Stack Partnership Proposal",
   description:
-    "A venture studio turning big ideas into scalable products—powered by strategy, community, and execution.",
+    "A community platform for vintage car enthusiasts, allowing users to create virtual garages, share stories, and participate in real-world events.",
     generator: 'v0.dev'
 }
 

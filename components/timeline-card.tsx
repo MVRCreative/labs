@@ -75,7 +75,7 @@ export function TimelineCard({ title, steps, color, index }: TimelineCardProps) 
   }
 
   return (
-    <div ref={cardRef} className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800/50 backdrop-blur-sm">
+    <div ref={cardRef} className="rounded-xl p-6">
       <div className="flex items-center gap-3 mb-6">
         <div
           className={`size-3 rounded-full ${color === "yellow" ? "bg-yellow-500" : color === "green" ? "bg-green-500" : "bg-red-500"}`}
